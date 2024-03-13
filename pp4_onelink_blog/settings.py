@@ -156,6 +156,24 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Add this import statement at the top of your settings.py
+from cloudinary_storage.storage import RawMediaCloudinaryStorage, RawStaticCloudinaryStorage
+
+# Add your Cloudinary credentials below the INSTALLED_APPS list
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dox4podfb',
+    'API_KEY': '428827828218662',
+    'API_SECRET': 'wkPvLBjBBoZTKacocEQrRlCIjMA'
+}
+
+# Update the following settings for media and static files
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
